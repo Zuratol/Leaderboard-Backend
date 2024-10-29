@@ -7,6 +7,10 @@ require('dotenv').config(); // Load environment variables
 const app = express();
 const port = process.env.PORT || 5000;
 
+console.log("Firebase Client Email:", process.env.FIREBASE_CLIENT_EMAIL);
+console.log("Firebase Project ID:", process.env.FIREBASE_PROJECT_ID);
+// Log other Firebase environment variables as needed
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
