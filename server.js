@@ -13,6 +13,17 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 
+// Check for required environment variables
+if (!process.env.FIREBASE_PROJECT_ID || 
+    !process.env.FIREBASE_CLIENT_EMAIL || 
+    !process.env.FIREBASE_PRIVATE_KEY) {
+    throw new Error('Missing Firebase environment variables.');
+}
+
+// Log Firebase configuration for debugging (excluding private key)
+console.log('Firebase Project ID:', process.env.FIREBASE_PROJECT_ID);
+console.log('Firebase Client Email:', process.env.FIREBASE_CLIENT_EMAIL);
+
 // Initialize Firebase Admin SDK using environment variables
 admin.initializeApp({
   credential: admin.credential.cert({
